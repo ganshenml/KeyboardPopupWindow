@@ -3,6 +3,7 @@ package com.custom.simplekeyboardview;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+
 
 public class KeyboardPopupWindow extends PopupWindow {
     private static final String TAG = "KeyboardPopupWindow";
@@ -30,9 +32,20 @@ public class KeyboardPopupWindow extends PopupWindow {
     }
 
     private void initConfig() {
-        setOutsideTouchable(true);
+        setOutsideTouchable(false);
         setFocusable(false);
         setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+    public void refreshKeyboardOutSideTouchable(boolean isTouchable) {
+        setOutsideTouchable(isTouchable);
+        if (!isTouchable) {
+            Log.d(TAG, "执行show");
+            show();
+        } else {
+            Log.d(TAG, "执行dismiss");
+            dismiss();
+        }
     }
 
     private void initView() {
@@ -92,7 +105,9 @@ public class KeyboardPopupWindow extends PopupWindow {
 
 
     public void show() {
-        this.showAtLocation(anchorView, Gravity.BOTTOM, 0, 0);
+        if (!isShowing() && anchorView != null) {
+            this.showAtLocation(anchorView, Gravity.BOTTOM, 0, 0);
+        }
     }
 
     public void refreshViewAndShow(Context context, View anchorView, EditText editText) {
@@ -109,14 +124,6 @@ public class KeyboardPopupWindow extends PopupWindow {
         this.dismiss();
         context = null;
         anchorView = null;
-    }
-
-    public interface OnKeyboardClickListener {
-        void onDigitalKeyClickListener(String digital);
-
-        void onDotKeyClickListener();
-
-        void onCrossKeyClickListener();
     }
 
 }

@@ -128,7 +128,7 @@
                 android:id="@+id/buttonDot"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:background="@drawable/selector_keyboard_click"
+                android:background="@drawable/selector_keyboard_click_dark"
                 android:text="."
                 android:textSize="24sp" />
 
@@ -144,7 +144,7 @@
                 android:id="@+id/buttonCross"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:background="@drawable/selector_keyboard_click"
+                android:background="@drawable/selector_keyboard_click_dark"
                 android:text="×"
                 android:textSize="24sp" />
         </TableRow>

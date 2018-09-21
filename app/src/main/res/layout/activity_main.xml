@@ -10,20 +10,30 @@
         android:id="@+id/numberEt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:cursorVisible="true"
         android:hint="数字键盘"
         android:inputType="number"
-        android:focusable="false"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <Button
-        android:id="@+id/popBtn"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/secondEt"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="弹出"
+        android:hint="普通键盘"
+        android:inputType="text"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberEt" />
+        app:layout_constraintTop_toBottomOf="@id/numberEt" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="按钮获取焦点"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secondEt" />
 
 </android.support.constraint.ConstraintLayout>
