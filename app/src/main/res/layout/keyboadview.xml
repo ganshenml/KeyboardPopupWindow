@@ -5,6 +5,10 @@
     android:gravity="bottom"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider"/>
     <LinearLayout
         android:id="@+id/dropdownLl"
         android:layout_width="match_parent"

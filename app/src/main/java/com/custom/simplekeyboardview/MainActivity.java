@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         numberEt = findViewById(R.id.numberEt);
-        keyboardPopupWindow = new KeyboardPopupWindow(MainActivity.this, getWindow().getDecorView(), numberEt,true);
+        keyboardPopupWindow = new KeyboardPopupWindow(MainActivity.this, getWindow().getDecorView(), numberEt, true);
 //        numberEt.setInputType(InputType.TYPE_NULL);//该设置会导致光标不可见
         numberEt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +49,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (keyboardPopupWindow != null && keyboardPopupWindow.isShowing()) {
+                keyboardPopupWindow.dismiss();
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
